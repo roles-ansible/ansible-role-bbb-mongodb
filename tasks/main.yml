@@ -3,6 +3,12 @@
 
 - include_tasks: mongodb.yml
 
+- name: install mongodb
+  become: true
+  package:
+    name: "{{ bbbakend__mongodb_packages }}"
+    state: "{{ bbbackend__mongodb_state }}"
+
 - name: Ensure mongod is started and enabled to start at boot.
   service:
     name: mongod
