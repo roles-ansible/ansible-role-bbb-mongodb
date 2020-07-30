@@ -1,0 +1,12 @@
+---
+- name: add mongodb apt key
+  become: true
+  apt_key:
+    url: "https://www.mongodb.org/static/pgp/server-{{ bbbackend__mongodb_version }}.asc"
+    state: "{{ bbbackend__mongodb_state }}"
+
+- name: add dependency apt repositories
+  become: true
+  apt_repository:
+    repo: "{{ bbbackend__mongodb_apt_repo }}"
+    state: "{{ bbbackend__mongodb_state }}"

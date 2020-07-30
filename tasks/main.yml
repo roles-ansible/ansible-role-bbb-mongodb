@@ -1,2 +1,11 @@
 ---
+include_task: repositories.yml
+
 - include_task: mongodb.yml
+
+- name: Ensure mongod is started and enabled to start at boot.
+  service:
+    name: mongod
+    enabled: true
+    state: started
+  become: true
